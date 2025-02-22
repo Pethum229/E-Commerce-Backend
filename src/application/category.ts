@@ -24,10 +24,6 @@ export const createCategory = async (
   next: NextFunction
 ) => {
   try {
-    if (!req.body || Object.keys(req.body).length === 0) {
-      throw new ValidationError("Request body cannot be empty");
-    }
-
     const result = CreateCategoryDTO.safeParse(req.body);
     if (!result.success) {
       throw new ValidationError("Invalid category data");
