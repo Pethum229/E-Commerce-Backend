@@ -77,31 +77,31 @@ export const getOrder = async (
 //   }
 // };
 
-export const getOrderForUser = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    const auth = getAuth(req);
-    const id = auth?.userId;
+// export const getOrderForUser = async (
+//   req: Request,
+//   res: Response,
+//   next: NextFunction
+// ) => {
+//   try {
+//     const auth = getAuth(req);
+//     const id = auth?.userId;
 
-    if (!id) {
-      return res.status(401).json({ message: "Unauthorized" });
-    }
+//     if (!id) {
+//       return res.status(401).json({ message: "Unauthorized" });
+//     }
 
-    // Find orders for the authenticated user
-    const order = await Order.findOne({ userId: id }); // ✅ Corrected query
+//     // Find orders for the authenticated user
+//     const order = await Order.findOne({ userId: id }); // ✅ Corrected query
 
-    if (!order) {
-      return res.status(404).json({ message: "Order not found" });
-    }
+//     if (!order) {
+//       return res.status(404).json({ message: "Order not found" });
+//     }
 
-    res.status(200).json(order);
-  } catch (error) {
-    next(error);
-  }
-};
+//     res.status(200).json(order);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 
 export const getOrdersForUser = async (
   req: Request,
